@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+
+
+<html>
+  <head>
+    
+    
+
+
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+
+<title>Developers Documentation</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+<link rel="shortcut icon" href="http://leonardo.robotice.org/static/leonardo/img/favicon.ico" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="robots" content="index,follow" />
+<meta name="generator" content="Leonardo" />
+<meta http-equiv="author" content="Michael Kutý, Aleš Komárek" />
+
+
+
+  
+
+
+<link href="http://leonardo.robotice.org/static/django_select2/css/select2.css" rel="stylesheet">
+<link href="http://leonardo.robotice.org/static/django_select2/css/extra.css" rel="stylesheet">
+
+
+
+
+
+
+<link rel="stylesheet" href="http://leonardo.robotice.org/static/dashboard/css/8f5a1be23cc3.css" type="text/css" media="screen" />
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://leonardo.robotice.org/static/dashboard/js/76adef98ad14.js"></script>
+
+<script type='text/javascript' charset='utf-8'>
+    // make translation info available on client
+    horizon.languageCode = 'en';
+    horizon.languageBidi = 'False';
+    horizon.datepickerLocale = 'en';
+    /* Load angular modules extensions list before we include angular/horizon.js */
+    var angularModuleExtension = [];
+</script>
+
+<script type="text/javascript" src="http://leonardo.robotice.org/static/dashboard/js/87acf9c3aa9c.js"></script>
+
+<script type='text/javascript' charset='utf-8'>
+/* Storage for backend configuration variables which the frontend
+ * should be aware of.
+ */
+angular.module('hz')
+  .config(['hzConfig', function (hzConfig) {
+    hzConfig.debug = false;
+    hzConfig.static_url = "/static/";
+    hzConfig.ajax = {
+      queue_limit: 10
+    };
+    hzConfig.auto_fade_alerts = {
+      delay: 3000,
+      fade_duration: 1500,
+      types: ['alert-success', 'alert-info']
+    };
+    hzConfig.disable_password_reveal = false;
+}]);
+
+/* fix standard carousel */
+angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
+.controller('CarouselController', ['$scope', '$timeout', '$transition', '$q', function ($scope, $timeout, $transition, $q) {
+}]).directive('carousel', [function() { 
+    return { }
+}]);
+
+</script>
+<script type="text/javascript" charset="utf-8">
+  /*
+    Added so that we can append Horizon scoped JS events to
+    the DOM load events without running in to the "horizon"
+    name-space not currently being defined since we load the
+    scripts at the bottom of the page.
+  */
+  var addHorizonLoadEvent = function(func) {
+    var old_onload = window.onload;
+
+    if (typeof window.onload != 'function') {
+      window.onload = func;
+    } else {
+      window.onload = function() {
+        old_onload();
+        func();
+      }
+    }
+  }
+</script>
+
+
+
+
+<link rel="shortcut icon" href="http://leonardo.robotice.org/favicon.ico" />
+
+
+
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-62809705-1']);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+  </head>
+  <body id="main_content" ng-app='hz' class="">
+    
+    
+<div class="messages">
+
+</div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        
+
+
+
+
+<div id="web-siteheadingwidget-1-1" class="col-md-2 col-md-offset-0 siteheading-base-default leonardo-widget leonardo-siteheading-widget">
+  <div class="text-left leonardo-content template-navbar siteheading-content-navbar">
+    
+    
+    
+    
+    
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  
+  <a class="navbar-brand" href="../../index.html">Leonardo Site</a>
+  
+</div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="web-treenavigationwidget-1-1" class="col-md-6 col-md-offset-0 treenavigation-base-default leonardo-widget leonardo-treenavigation-widget">
+  <div class="text-left leonardo-content template-navbar treenavigation-content-navbar">
+    
+    
+    
+    
+    
+
+<div class="navbar-collapse collapse" id="top-nav">
+  <ul class="nav navbar-nav">
+  
+  
+    
+    
+    <li >
+      <a href="../../about/index.html">About</a>
+    </li>
+    
+  
+    
+    
+    <li >
+      <a href="../../package-index/index.html">Packages</a>
+    </li>
+    
+  
+    
+    
+    <li class="dropdown active">
+      <a class="dropdown-toggle" href="../index.html">Documentation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+      
+        <li class="active">
+          <a href="index.html">Developers</a>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  
+  </ul>
+</div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="web-userloginwidget-1-1" class="col-md-4 col-md-offset-0 userlogin-base-default leonardo-widget leonardo-userlogin-widget">
+  <div class="text-left leonardo-content template-navbar userlogin-content-navbar">
+    
+    
+    
+    
+    
+<ul class="navbar-collapse collapse nav navbar-nav">
+  
+  
+  <li><a class="ajax-modal" href="http://leonardo.robotice.org/auth/login/?next=http://leonardo.robotice.org/documentation/developer/">Sign In</a></li>
+  
+  
+</ul>
+
+  </div>
+</div>
+
+
+
+
+
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-header">
+        
+      </div>
+      <div class="bs-docs-section">
+        <aside class="col1 col-md-12">
+          
+          
+
+
+
+        </aside>
+        <section class="col3 col-md-12">
+          
+
+
+
+
+<div id="web-pagetitlewidget-5-4" class="col-md-12 col-md-offset-0 pagetitle-base-default leonardo-widget leonardo-pagetitle-widget">
+  <div class="text-left leonardo-content template-section pagetitle-content-section">
+    
+    
+    
+    
+    
+
+<div class="section-heading">
+  <h2 class="section-heading">Developers</h2>
+</div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="web-htmltextwidget-5-4" class="col-md-12 col-md-offset-0 htmltext-base-default leonardo-widget leonardo-htmltext-widget">
+  <div class="text-left leonardo-content template-default htmltext-content-default">
+    
+    
+    
+    
+    
+<iframe width="100%" height="800px" src="http://django-leonardo.readthedocs.org"></iframe>
+
+  </div>
+</div>
+
+
+
+
+
+          
+
+
+
+          
+        </section>
+        <aside class="col2 col-md-12">
+          
+          
+
+
+
+        </aside>
+      </div>
+      <footer>
+        
+      </footer>
+    </div>
+    
+
+
+
+
+
+
+
+<script type="text/javascript" src="../../i18n/js/horizon/index.html"></script>
+
+
+<script type="text/javascript" src="http://leonardo.robotice.org/static/dashboard/js/118f0cfe9bf2.js"></script>
+
+
+<script type="text/html" id="modal_template"><div class="modal" data-backdrop="{{modal_backdrop}}"><div class="modal-dialog"><div class="modal-content"><div class='modal-header'><a class='close' data-dismiss='modal'>&times;</a><h3 class="modal-title">{{title}}</h3></div><div class='modal-body'>
+        {{body}}
+      </div><div class='modal-footer'><a href='index.html#' class='btn btn-primary'>{{confirm}}</a><a href='index.html#' class='btn btn-default cancel' data-dismiss='modal'>{{cancel}}</a></div></div></div></div></script>
+
+<script type="text/html" id="empty_row_template"><tr class="odd empty"><td colspan="{{colspan}}">{{no_items_label}}</td></tr></script>
+
+<script type="text/html" id="alert_message_template"><div class="alert alert-dismissable fade in alert-{{type}}"><a class="close" data-dismiss="alert" href="index.html#">&times;</a><p><strong>{{type_display}}</strong>
+    {{#safe}}
+      {{{message}}}
+    {{/safe}}
+    {{^safe}}
+      {{message}}
+    {{/safe}}
+  </p></div></script>
+
+<script type="text/html" id="spinner-modal"><div class="modal loading"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><p>{{text}}&hellip;</p></div></div></div></div></script>
+
+<script type="text/html" id="membership_template"><ul class="nav nav-pills btn-group btn-group-sm"><li class="member" data-{{step_slug}}-id="{{data_id}}"><span class="display_name">{{display_name}}</span></li><li class="active"><a class="btn btn-primary" href="index.html#add_remove">{{text}}</a></li><li class="dropdown role_options"><a class="dropdown-toggle btn btn-default" data-toggle="dropdown" href="index.html#"><span class="roles_display">{{roles_label}}</span><span class="caret"></span></a><ul class="dropdown-menu role_dropdown clearfix">
+      {{#roles}}
+      <li data-role-id="{{role_id}}"><i class="fa fa-check"></i>  {{role_name}}</li>
+      {{/roles}}
+    </ul></li></ul></script>
+
+
+
+
+
+
+<script>
+  // Call init on DOM ready.
+  $(document).ready(horizon.init);
+</script>
+
+
+
+    
+    <div id="modal_wrapper"></div>
+    
+  </body>
+</html>

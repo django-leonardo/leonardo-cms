@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+
+
+<html>
+  <head>
+    
+    
+
+
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+
+<title>Leonardo CMS</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+<link rel="shortcut icon" href="http://leonardo.robotice.org/static/leonardo/img/favicon.ico" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="robots" content="index,follow" />
+<meta name="generator" content="Leonardo" />
+<meta http-equiv="author" content="Michael Kutý, Aleš Komárek" />
+
+
+
+  
+
+
+<link href="http://leonardo.robotice.org/static/django_select2/css/select2.css" rel="stylesheet">
+<link href="http://leonardo.robotice.org/static/django_select2/css/extra.css" rel="stylesheet">
+
+
+
+
+
+
+<link rel="stylesheet" href="http://leonardo.robotice.org/static/dashboard/css/8f5a1be23cc3.css" type="text/css" media="screen" />
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://leonardo.robotice.org/static/dashboard/js/76adef98ad14.js"></script>
+
+<script type='text/javascript' charset='utf-8'>
+    // make translation info available on client
+    horizon.languageCode = 'en';
+    horizon.languageBidi = 'False';
+    horizon.datepickerLocale = 'en';
+    /* Load angular modules extensions list before we include angular/horizon.js */
+    var angularModuleExtension = [];
+</script>
+
+<script type="text/javascript" src="http://leonardo.robotice.org/static/dashboard/js/87acf9c3aa9c.js"></script>
+
+<script type='text/javascript' charset='utf-8'>
+/* Storage for backend configuration variables which the frontend
+ * should be aware of.
+ */
+angular.module('hz')
+  .config(['hzConfig', function (hzConfig) {
+    hzConfig.debug = false;
+    hzConfig.static_url = "/static/";
+    hzConfig.ajax = {
+      queue_limit: 10
+    };
+    hzConfig.auto_fade_alerts = {
+      delay: 3000,
+      fade_duration: 1500,
+      types: ['alert-success', 'alert-info']
+    };
+    hzConfig.disable_password_reveal = false;
+}]);
+
+/* fix standard carousel */
+angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
+.controller('CarouselController', ['$scope', '$timeout', '$transition', '$q', function ($scope, $timeout, $transition, $q) {
+}]).directive('carousel', [function() { 
+    return { }
+}]);
+
+</script>
+<script type="text/javascript" charset="utf-8">
+  /*
+    Added so that we can append Horizon scoped JS events to
+    the DOM load events without running in to the "horizon"
+    name-space not currently being defined since we load the
+    scripts at the bottom of the page.
+  */
+  var addHorizonLoadEvent = function(func) {
+    var old_onload = window.onload;
+
+    if (typeof window.onload != 'function') {
+      window.onload = func;
+    } else {
+      window.onload = function() {
+        old_onload();
+        func();
+      }
+    }
+  }
+</script>
+
+
+
+
+<link rel="shortcut icon" href="http://leonardo.robotice.org/favicon.ico" />
+
+
+
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-62809705-1']);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+  </head>
+  <body id="main_content" ng-app='hz' class="">
+    
+    
+<div class="messages">
+
+</div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        
+
+
+
+
+<div id="web-siteheadingwidget-1-1" class="col-md-2 col-md-offset-0 siteheading-base-default leonardo-widget leonardo-siteheading-widget">
+  <div class="text-left leonardo-content template-navbar siteheading-content-navbar">
+    
+    
+    
+    
+    
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  
+  <a class="navbar-brand" href="index.html">Leonardo Site</a>
+  
+</div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="web-treenavigationwidget-1-1" class="col-md-6 col-md-offset-0 treenavigation-base-default leonardo-widget leonardo-treenavigation-widget">
+  <div class="text-left leonardo-content template-navbar treenavigation-content-navbar">
+    
+    
+    
+    
+    
+
+<div class="navbar-collapse collapse" id="top-nav">
+  <ul class="nav navbar-nav">
+  
+  
+    
+    
+    <li >
+      <a href="about/index.html">About</a>
+    </li>
+    
+  
+    
+    
+    <li >
+      <a href="package-index/index.html">Packages</a>
+    </li>
+    
+  
+    
+    
+    <li class="dropdown ">
+      <a class="dropdown-toggle" href="documentation/index.html">Documentation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+      
+        <li class="">
+          <a href="documentation/developer/index.html">Developers</a>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  
+  </ul>
+</div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="web-userloginwidget-1-1" class="col-md-4 col-md-offset-0 userlogin-base-default leonardo-widget leonardo-userlogin-widget">
+  <div class="text-left leonardo-content template-navbar userlogin-content-navbar">
+    
+    
+    
+    
+    
+<ul class="navbar-collapse collapse nav navbar-nav">
+  
+  
+  <li><a class="ajax-modal" href="http://leonardo.robotice.org/auth/login/?next=http://leonardo.robotice.org/">Sign In</a></li>
+  
+  
+</ul>
+
+  </div>
+</div>
+
+
+
+
+
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-header">
+        
+      </div>
+      <div class="bs-docs-section">
+        <aside class="col1 col-md-12">
+          
+          
+
+
+
+        </aside>
+        <section class="col3 col-md-12">
+          
+
+
+
+
+<div id="web-htmltextwidget-1-1" class="col-md-12 col-md-offset-0 htmltext-base-jumbotron leonardo-widget leonardo-htmltext-widget">
+  <div class="jumbotron text-center leonardo-content template-default htmltext-content-default">
+    
+    
+    
+    
+    
+<h2>Easiest way how to start with Django</h2>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="web-packagelistwidget-1-1" class="col-md-12 col-md-offset-0 packagelist-base-default leonardo-widget leonardo-packagelist-widget">
+  <div class="text-left leonardo-content template-default packagelist-content-default">
+    
+    
+    
+    
+    
+
+   
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="web-markuptextwidget-1-2" class="col-md-12 col-md-offset-0 markuptext-base-default leonardo-widget leonardo-markuptext-widget">
+  <div class="text-center leonardo-content template-default markuptext-content-default">
+    
+    
+    
+    <a id="quickstart"></a>
+    <h2 class="widget-title"><span>Quickstart</span></h2>
+    
+    
+    
+<pre class="code bash literal-block">
+wget -O - https://github.com/django-leonardo/django-leonardo/raw/develop/contrib/install_leonardo.sh <span class="punctuation">|</span> sh
+</pre>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="web-packagelistwidget-1-2" class="col-md-12 col-md-offset-0 packagelist-base-default leonardo-widget leonardo-packagelist-widget">
+  <div class="text-left leonardo-content template-default packagelist-content-default">
+    
+    
+    
+    
+    
+
+   
+
+      <h2><a href="package-index/categories/admin/index.html">Admin Packages</a> (2)</h2>
+      <p></p>
+      <table class="table">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Commits</th>
+              
+                  <th>Version</th>
+                                  
+              
+                  <th>PyPi Downloads</th>
+              
+              <th><span class="glyphicon glyphicon-star"></span></th>
+              <th><span class="glyphicon glyphicon-random"></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td><a href="package-index/packages/leonardo-bootstrap-admin/index.html">Bootstrap Admin Theme</a></td>
+              <td><img src="https://chart.googleapis.com/chart?cht=bvg&chs=105x20&chd=t:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0&chco=666666&chbh=1,1,1&chds=0,20" /></td>
+              
+                <td>2015.7.0</td>
+                <td>866</td>
+              
+              <td>1</td>
+              <td>n/a</td>
+            </tr>
+          
+            <tr>
+              <td><a href="package-index/packages/django-admin/index.html">Django Admin</a></td>
+              <td><img src="https://chart.googleapis.com/chart?cht=bvg&chs=105x20&chd=t:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0&chco=666666&chbh=1,1,1&chds=0,20" /></td>
+              
+                <td>2015.7.0</td>
+                <td>571</td>
+              
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
+          
+        </tbody>
+      </table>    
+      <p>
+        <a href="package-index/categories/admin/index.html">
+          more admin packages...
+        </a>
+      </p>
+   
+
+      <h2><a href="package-index/categories/applications/index.html">Applications</a> (2)</h2>
+      <p></p>
+      <table class="table">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Commits</th>
+              
+                  <th>Version</th>
+                                  
+              
+                  <th>PyPi Downloads</th>
+              
+              <th><span class="glyphicon glyphicon-star"></span></th>
+              <th><span class="glyphicon glyphicon-random"></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td><a href="package-index/packages/blog/index.html">Blog</a></td>
+              <td><img src="https://chart.googleapis.com/chart?cht=bvg&chs=105x20&chd=t:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,5,4,9,1,0,0,1,0,0,2,0,0,0,0,0,0,0&chco=666666&chbh=1,1,1&chds=0,20" /></td>
+              
+                <td>2015.8.0</td>
+                <td>291</td>
+              
+              <td>1</td>
+              <td>n/a</td>
+            </tr>
+          
+            <tr>
+              <td><a href="package-index/packages/team/index.html">Team</a></td>
+              <td><img src="https://chart.googleapis.com/chart?cht=bvg&chs=105x20&chd=t:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,3,0,0,0&chco=666666&chbh=1,1,1&chds=0,20" /></td>
+              
+                <td>2015.5.1</td>
+                <td>2037</td>
+              
+              <td>n/a</td>
+              <td>1</td>
+            </tr>
+          
+        </tbody>
+      </table>    
+      <p>
+        <a href="package-index/categories/applications/index.html">
+          more applications...
+        </a>
+      </p>
+   
+
+      <h2><a href="package-index/categories/site-packages/index.html">Site Packages</a> (1)</h2>
+      <p></p>
+      <table class="table">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Commits</th>
+              
+                  <th>Version</th>
+                                  
+              
+                  <th>PyPi Downloads</th>
+              
+              <th><span class="glyphicon glyphicon-star"></span></th>
+              <th><span class="glyphicon glyphicon-random"></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td><a href="package-index/packages/leonardo-multisite/index.html">Multisite</a></td>
+              <td><img src="https://chart.googleapis.com/chart?cht=bvg&chs=105x20&chd=t:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,3,0,0,0,0,0,0&chco=666666&chbh=1,1,1&chds=0,20" /></td>
+              
+                <td>2015.7.0</td>
+                <td>928</td>
+              
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
+          
+        </tbody>
+      </table>    
+      <p>
+        <a href="package-index/categories/site-packages/index.html">
+          more site packages...
+        </a>
+      </p>
+   
+
+      <h2><a href="package-index/categories/system/index.html">System packages</a> (1)</h2>
+      <p></p>
+      <table class="table">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Commits</th>
+              
+                  <th>Version</th>
+                                  
+              
+                  <th>PyPi Downloads</th>
+              
+              <th><span class="glyphicon glyphicon-star"></span></th>
+              <th><span class="glyphicon glyphicon-random"></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td><a href="package-index/packages/leonardo-celery/index.html">Celery Tasks</a></td>
+              <td><img src="https://chart.googleapis.com/chart?cht=bvg&chs=105x20&chd=t:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0&chco=666666&chbh=1,1,1&chds=0,20" /></td>
+              
+                <td></td>
+                <td>0</td>
+              
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
+          
+        </tbody>
+      </table>    
+      <p>
+        <a href="package-index/categories/system/index.html">
+          more system packages...
+        </a>
+      </p>
+   
+
+      <h2><a href="package-index/categories/themes/index.html">Themes</a> (1)</h2>
+      <p></p>
+      <table class="table">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Commits</th>
+              
+                  <th>Version</th>
+                                  
+              
+                  <th>PyPi Downloads</th>
+              
+              <th><span class="glyphicon glyphicon-star"></span></th>
+              <th><span class="glyphicon glyphicon-random"></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td><a href="package-index/packages/leonardo-theme-bootswatch/index.html">Bootstwatch Theme</a></td>
+              <td><img src="https://chart.googleapis.com/chart?cht=bvg&chs=105x20&chd=t:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,4,4,3,3,1,0,0,0,0,0,0,0,0,0,0,0,0&chco=666666&chbh=1,1,1&chds=0,20" /></td>
+              
+                <td>2015.5.2</td>
+                <td>928</td>
+              
+              <td>1</td>
+              <td>n/a</td>
+            </tr>
+          
+        </tbody>
+      </table>    
+      <p>
+        <a href="package-index/categories/themes/index.html">
+          more themes...
+        </a>
+      </p>
+   
+
+      <h2><a href="package-index/categories/wysiwyg/index.html">Wysiwyg Editors</a> (1)</h2>
+      <p></p>
+      <table class="table">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Commits</th>
+              
+                  <th>Version</th>
+                                  
+              
+                  <th>PyPi Downloads</th>
+              
+              <th><span class="glyphicon glyphicon-star"></span></th>
+              <th><span class="glyphicon glyphicon-random"></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td><a href="package-index/packages/leonardo-redactor/index.html">Redactor</a></td>
+              <td><img src="https://chart.googleapis.com/chart?cht=bvg&chs=105x20&chd=t:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0&chco=666666&chbh=1,1,1&chds=0,20" /></td>
+              
+                <td></td>
+                <td>0</td>
+              
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
+          
+        </tbody>
+      </table>    
+      <p>
+        <a href="package-index/categories/wysiwyg/index.html">
+          more wysiwyg editors...
+        </a>
+      </p>
+   
+
+
+  </div>
+</div>
+
+
+
+
+
+          
+
+
+
+          
+        </section>
+        <aside class="col2 col-md-12">
+          
+          
+
+
+
+        </aside>
+      </div>
+      <footer>
+        
+      </footer>
+    </div>
+    
+
+
+
+
+
+
+
+<script type="text/javascript" src="i18n/js/horizon/index.html"></script>
+
+
+<script type="text/javascript" src="http://leonardo.robotice.org/static/dashboard/js/118f0cfe9bf2.js"></script>
+
+
+<script type="text/html" id="modal_template"><div class="modal" data-backdrop="{{modal_backdrop}}"><div class="modal-dialog"><div class="modal-content"><div class='modal-header'><a class='close' data-dismiss='modal'>&times;</a><h3 class="modal-title">{{title}}</h3></div><div class='modal-body'>
+        {{body}}
+      </div><div class='modal-footer'><a href='index.html#' class='btn btn-primary'>{{confirm}}</a><a href='index.html#' class='btn btn-default cancel' data-dismiss='modal'>{{cancel}}</a></div></div></div></div></script>
+
+<script type="text/html" id="empty_row_template"><tr class="odd empty"><td colspan="{{colspan}}">{{no_items_label}}</td></tr></script>
+
+<script type="text/html" id="alert_message_template"><div class="alert alert-dismissable fade in alert-{{type}}"><a class="close" data-dismiss="alert" href="index.html#">&times;</a><p><strong>{{type_display}}</strong>
+    {{#safe}}
+      {{{message}}}
+    {{/safe}}
+    {{^safe}}
+      {{message}}
+    {{/safe}}
+  </p></div></script>
+
+<script type="text/html" id="spinner-modal"><div class="modal loading"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><p>{{text}}&hellip;</p></div></div></div></div></script>
+
+<script type="text/html" id="membership_template"><ul class="nav nav-pills btn-group btn-group-sm"><li class="member" data-{{step_slug}}-id="{{data_id}}"><span class="display_name">{{display_name}}</span></li><li class="active"><a class="btn btn-primary" href="index.html#add_remove">{{text}}</a></li><li class="dropdown role_options"><a class="dropdown-toggle btn btn-default" data-toggle="dropdown" href="index.html#"><span class="roles_display">{{roles_label}}</span><span class="caret"></span></a><ul class="dropdown-menu role_dropdown clearfix">
+      {{#roles}}
+      <li data-role-id="{{role_id}}"><i class="fa fa-check"></i>  {{role_name}}</li>
+      {{/roles}}
+    </ul></li></ul></script>
+
+
+
+
+
+
+<script>
+  // Call init on DOM ready.
+  $(document).ready(horizon.init);
+</script>
+
+
+
+    
+    <div id="modal_wrapper"></div>
+    
+  </body>
+</html>
